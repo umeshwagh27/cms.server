@@ -1,0 +1,13 @@
+@cms.server_HostAddress = http://localhost:5216
+@cms.server_CarController={{@cms.server_HostAddress}}/Car
+
+GET {{cms.server_CarController}}/GetCarList/
+Accept: application/json
+
+POST {{cms.server_CarController}}/AddCar/
+Accept: application/json
+
+POST {{cms.server_CarController}}/AddCarModel/
+Accept: application/json
+Content-Type: multipart/form-data
+###
