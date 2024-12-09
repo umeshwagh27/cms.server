@@ -8,7 +8,7 @@ namespace cms.service
     {
         public MappingProfile()
         {
-            CreateMap<AddCarVM, Car>().ReverseMap();
+            CreateMap<AddCarRequest, Car>().ReverseMap();
         }
     }
 }

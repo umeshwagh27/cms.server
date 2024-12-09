@@ -5,6 +5,5 @@ namespace cms.service.ViewModel
     {
         public bool IsSuccess { get; set; }
         public string Message { get; set; } = string.Empty;
-        public object JsonObj { get; set; }
     }
 }

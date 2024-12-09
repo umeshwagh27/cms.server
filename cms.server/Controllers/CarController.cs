@@ -10,11 +10,11 @@ namespace cms.server.Controllers
     [Route("api/[controller]")]
     public class CarController
     {
-        private readonly IValidator<AddCarVM> _validator;
-        private readonly IValidator<AddCarModelVM> _validatorCarModel;
+        private readonly IValidator<AddCarRequest> _validator;
+        private readonly IValidator<AddCarModelRequest> _validatorCarModel;
         private readonly ICar _car;
         private readonly IWebHostEnvironment _webHostEnvironment;
-        public CarController(ICar car, IValidator<AddCarVM> validator, IValidator<AddCarModelVM> validatorCarMode,IWebHostEnvironment webHostEnvironment) {
+        public CarController(ICar car, IValidator<AddCarRequest> validator, IValidator<AddCarModelRequest> validatorCarMode,IWebHostEnvironment webHostEnvironment) {
             _car = car;
             _validator = validator;
             _validatorCarModel = validatorCarMode;
@@ -28,10 +28,16 @@ namespace cms.server.Controllers
             return new JsonResult(_car.GetCarList(pageNumber, pageSize,search,sortBy,sortOrder));
         }
 
+        [HttpGet]
+        [Route("getCarModelByBrandName")]
+        public IActionResult GetCarModelByBrandName([FromQuery] string brand = "Audi")
+        {
+            return new JsonResult(_car.GetCarModelByBrandName(brand));
+        }
 
         [HttpPost]
         [Route("addCar")]
-        public async Task<JsonResult> AddCar([FromForm] AddCarVM carVM)
+        public async Task<JsonResult> AddCar([FromForm] AddCarRequest carVM)
         {
             var validationResult = _validator.Validate(carVM);
 
@@ -43,7 +49,7 @@ namespace cms.server.Controllers
         }
         [HttpPost]
         [Route("addCarModel")]
-        public async Task<JsonResult> AddCarModel([FromForm] AddCarModelVM carModelVM)
+        public async Task<JsonResult> AddCarModel([FromForm] AddCarModelRequest carModelVM)
         { 
             var validationResult = _validatorCarModel.Validate(carModelVM);
 
@@ -51,10 +57,9 @@ namespace cms.server.Controllers
             {
                 return new JsonResult(validationResult.Errors);
             }
-
+            List<string> lstImage = new List<string>();
             if (carModelVM.Images != null)
-            {
-                List<string> lstImage = new List<string>();
+            {        
                 foreach (var image in carModelVM.Images)
                 {
                     var filename = await CommonMethod.WriteFile(_webHostEnvironment.WebRootPath, "CarImg", "Img", image);

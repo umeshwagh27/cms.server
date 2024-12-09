@@ -2,7 +2,7 @@
 
 namespace cms.service.ViewModel
 {
-    public class AddCarVM
+    public class AddCarRequest
     {
         public string Brand { get; set; } = default!;
         public string ModelName { get; set; } = default!;
@@ -10,7 +10,7 @@ namespace cms.service.ViewModel
         public string Description { get; set; } = default!;
         public DateTime DateofManufacturing { get; set; } = default!;
     }
-    public class AddCarVMValidator : AbstractValidator<AddCarVM>
+    public class AddCarVMValidator : AbstractValidator<AddCarRequest>
     {
         public AddCarVMValidator()
         {

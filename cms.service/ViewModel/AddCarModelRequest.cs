@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Http;
 namespace cms.service.ViewModel
 {
-    public class AddCarModelVM
+    public class AddCarModelRequest
     {
         public string Brand { get; set; } = default!;
         public string ClassName { get; set; } = default!;
@@ -10,7 +10,7 @@ namespace cms.service.ViewModel
         public decimal Price { get; set; } = default!;
         public List<IFormFile> Images { get; set; }
     }
-    public class AddCarModelVMValidator : AbstractValidator<AddCarModelVM>
+    public class AddCarModelVMValidator : AbstractValidator<AddCarModelRequest>
     {
         public AddCarModelVMValidator()
         {
