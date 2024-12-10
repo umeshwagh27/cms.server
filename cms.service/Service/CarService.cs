@@ -125,9 +125,12 @@ namespace cms.service.Service
                     var cars = await _db.Cars.Where(x => x.Brand == model.Brand).FirstOrDefaultAsync();
                     if (cars != null)
                     {
-                        var newCar = _mapper.Map<Car>(model);
-                        newCar.IsActive = true;
-                        _db.Cars.Update(newCar);
+                        cars.Brand = model.Brand;
+                        cars.DateofManufacturing = model.DateofManufacturing;
+                        cars.ModelName = model.ModelName;
+                        cars.ModelCode = model.ModelCode;
+                        cars.IsActive = true;
+                        _db.Cars.Update(cars);
                         response.IsSuccess = true;
                         response.Message = "Record updated";
                     }
