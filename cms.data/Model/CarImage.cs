@@ -6,7 +6,8 @@ namespace cms.data.Model
     {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long Id { get; set; }
-        public string ImageUrl { get; set; } = default!;
+        public string Name { get; set; } = default!;
+        public byte[] Data { get; set; } = default!;
         public virtual long? ClassId { get; set; }
         [ForeignKey("ClassId")]
         public virtual CarModelClass ClassIdFk { get; set; }

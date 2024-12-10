@@ -9,6 +9,6 @@
         public string? sortCol { get; set; } = string.Empty;
         public int? totalPage { get; set; }
         public int? totalRecords { get; set; }
-        public dynamic? jsonData { get; set; } = string.Empty;
+        public IQueryable<CarViewModel> carViewModel { get; set; }
     }
 }

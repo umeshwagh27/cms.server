@@ -9,7 +9,7 @@ namespace cms.data.Model
         public virtual long? CarId { get; set; }
         [ForeignKey("CarId")]
         public virtual Car CarIdFk { get; set; }
-        [StringLength(20)]
+        [StringLength(1)]
         public string ClassName { get; set; } = default!;
         public string Features { get; set; } = default!;
         public decimal Price { get; set; } = default!;

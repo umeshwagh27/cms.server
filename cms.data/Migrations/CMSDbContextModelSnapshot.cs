@@ -71,7 +71,11 @@ namespace cms.data.Migrations
                     b.Property<long?>("ClassId")
                         .HasColumnType("bigint");
 
-                    b.Property<string>("ImageUrl")
+                    b.Property<byte[]>("Data")
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -95,8 +99,8 @@ namespace cms.data.Migrations
 
                     b.Property<string>("ClassName")
                         .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                        .HasMaxLength(1)
+                        .HasColumnType("nvarchar(1)");
 
                     b.Property<string>("Features")
                         .IsRequired()

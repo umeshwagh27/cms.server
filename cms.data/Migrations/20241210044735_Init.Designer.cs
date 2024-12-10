@@ -12,7 +12,7 @@ using cms.data.Data;
 namespace cms.data.Migrations
 {
     [DbContext(typeof(CMSDbContext))]
-    [Migration("20241208101720_Init")]
+    [Migration("20241210044735_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -74,7 +74,11 @@ namespace cms.data.Migrations
                     b.Property<long?>("ClassId")
                         .HasColumnType("bigint");
 
-                    b.Property<string>("ImageUrl")
+                    b.Property<byte[]>("Data")
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -98,8 +102,8 @@ namespace cms.data.Migrations
 
                     b.Property<string>("ClassName")
                         .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                        .HasMaxLength(1)
+                        .HasColumnType("nvarchar(1)");
 
                     b.Property<string>("Features")
                         .IsRequired()

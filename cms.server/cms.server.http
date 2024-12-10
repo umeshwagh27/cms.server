@@ -4,14 +4,17 @@
 GET {{cms.server_CarController}}/getCarList/
 Accept: application/json
 
-GET {{cms.server_CarController}}/getCarModelByBrandName/
+
+GET {{cms.server_CarController}}/GetCarDetailByBrandName/
 Accept: application/json
 
-
-POST {{cms.server_CarController}}/addCar/
+GET {{cms.server_CarController}}/getCarModelByBrandClassName/
 Accept: application/json
 
-POST {{cms.server_CarController}}/addCarModel/
+POST {{cms.server_CarController}}/addeditCar/
+Accept: application/json
+
+POST {{cms.server_CarController}}/addeditCarModel/
 Accept: application/json
 Content-Type: multipart/form-data
 ###

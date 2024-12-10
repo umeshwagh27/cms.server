@@ -12,7 +12,7 @@
         public string Features { get; set; } = default!;
         public decimal Price { get; set; } = default!;
         public long? ImageId { get; set; }
-        public List<string> ImageUrl=new List<string>();
+        public List<string> ImageUrl { get; set; } = new List<string>(); // List of images
     }
 
 }

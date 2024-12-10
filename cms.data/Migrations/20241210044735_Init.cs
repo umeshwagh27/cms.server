@@ -36,7 +36,7 @@ namespace cms.data.Migrations
                     Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     CarId = table.Column<long>(type: "bigint", nullable: true),
-                    ClassName = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    ClassName = table.Column<string>(type: "nvarchar(1)", maxLength: 1, nullable: false),
                     Features = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
                 },
@@ -56,7 +56,8 @@ namespace cms.data.Migrations
                 {
                     Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Data = table.Column<byte[]>(type: "varbinary(max)", nullable: false),
                     ClassId = table.Column<long>(type: "bigint", nullable: true)
                 },
                 constraints: table =>
